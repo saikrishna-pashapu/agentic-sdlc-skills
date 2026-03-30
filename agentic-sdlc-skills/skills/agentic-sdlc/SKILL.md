@@ -1,38 +1,29 @@
 ---
 name: agentic-sdlc
-description: Turn a vague app, website, or software idea into a structured software delivery workflow with research, architecture planning, task decomposition, tracked execution, and clean handoffs.
+description: Orchestrate end-to-end software delivery for a new app, website, SaaS, internal tool, API, or automation system. Clarify requirements, research patterns, plan architecture, decompose tasks, guide implementation, review progress, and maintain track files with clean handoffs.
 ---
 
 # Agentic SDLC
 
-Use this skill when the user wants to build a new app, website, SaaS product, internal tool, API, automation system, or software platform from scratch, or when an existing repo lacks a clear plan, task graph, and execution tracker.
+Use this skill when the user wants to build software from scratch, rescue a chaotic repo, or create a structured delivery process before large-scale implementation.
 
-This skill is for **structured software delivery**, not just code generation. It helps the agent move through a disciplined workflow:
+This skill is intentionally **process-heavy**. The goal is not to jump straight into code. The goal is to build software through a disciplined flow that creates durable repo memory and clean task handoffs.
 
-1. clarify the product
-2. research missing patterns if needed
-3. plan architecture before coding
-4. decompose the system into modules and tasks
-5. execute one task at a time
-6. review against the plan
-7. write a clean handoff summary
-8. update progress and decisions
+## Outcomes
 
-## Core principles
+By the end of using this skill, the project should have:
 
-- Do **not** jump straight into coding when the request is vague.
-- Prefer a clear plan over speculative implementation.
-- Keep durable state in repo files, not only in chat context.
-- Separate **plan** from **track**:
-  - `plan/` = what should be built
-  - `track/` = what was actually done, changed, deferred, or blocked
-- Work in focused task-sized units.
-- Keep context clean with short handoff summaries after each task.
-- If assumptions are needed, write them down explicitly instead of hiding them.
+- a clear product brief
+- explicit assumptions
+- a research summary when requirements are vague
+- a written architecture plan for frontend, backend, database, and infrastructure
+- a task backlog with acceptance criteria and dependencies
+- tracking files that show done / active / blocked work
+- a handoff summary for the next focused task
 
-## Default file system layout
+## Directory contract
 
-When starting a fresh project, create or maintain this structure:
+Prefer this structure for new projects. Adapt if the repo already has a strong existing structure.
 
 ```text
 project/
@@ -56,14 +47,18 @@ plan/
   frontend/
     pages/
     components/
+    flows/
   backend/
     domains/
+    integrations/
   database/
     schema.md
+    migrations.md
   testing/
     strategy.md
   deployment/
     env.md
+    runbook.md
 
 tasks/
   backlog.md
@@ -80,6 +75,7 @@ track/
   frontend/
   backend/
   database/
+  infra/
 
 context/
   current-context.md
@@ -87,218 +83,170 @@ context/
   relevant-files.md
 ```
 
-If the repo already has a structure, adapt to it instead of force-replacing it.
+## Rules
 
-## Workflow
+1. Do not code first when the request is vague.
+2. Keep durable project state in files, not only in chat history.
+3. Separate plan from track.
+   - `plan/` = intended design
+   - `track/` = what actually happened
+4. Work in narrow tasks.
+5. After every significant task, update track files and write a handoff summary.
+6. If you must assume, write the assumption down.
+7. When a user is vague but does not want long Q&A, choose sensible defaults and record them.
 
-## Phase 1: intake and clarification
+## Operating loop
 
-First, transform the user request into a structured product brief.
+### Phase 1 — intake
 
-Capture at minimum:
+Read the request and normalize it into a project brief.
 
+Capture:
 - product type
 - target users
-- primary workflows
-- required pages or screens
+- core workflows
 - auth and roles
-- core data entities
+- required pages/screens
+- key entities
 - integrations
-- admin needs
-- deployment assumptions
-- non-functional requirements
+- analytics/admin needs
+- constraints
 - success criteria
 
-If critical details are missing:
-- ask focused clarifying questions, or
-- if the user explicitly wants momentum, make reasonable assumptions and record them in `project/assumptions.md`.
-
-Create or update:
-
+Write:
 - `project/project.md`
 - `project/assumptions.md`
 
-## Phase 2: research
+If the idea is vague, consult `references/intake-question-bank.md`.
 
-When requirements are vague or under-specified, research patterns before locking architecture.
+### Phase 2 — research
 
-Research may include:
-- comparable product flows
-- UI conventions
-- framework and library choices
-- deployment patterns
-- API design approaches
-- database design references
+If the user asks for something vague like “build me a news website” or “make me a CRM”, research patterns before freezing architecture.
 
-Write concise findings to:
+Research should be distilled, not dumped.
+
+Write concise outputs into:
 - `research/ui-references.md`
 - `research/technical-references.md`
 - `research/decisions-support.md`
 
-Do not dump raw search results. Distill them into decisions and options.
+Use `references/research-guide.md` and `checklists/planning-checklist.md`.
 
-## Phase 3: architecture planning
+### Phase 3 — architecture planning
 
-Before implementation, write a structured plan.
-
-At minimum create:
-
+Before implementation, write:
 - `plan/prd.md`
 - `plan/architecture/system.md`
 - `plan/architecture/frontend.md`
 - `plan/architecture/backend.md`
 - `plan/architecture/database.md`
+- `plan/architecture/infrastructure.md` if relevant
 
-For frontend planning, define:
+Frontend planning must cover:
 - page map
-- component hierarchy
-- states
+- sections and components
+- states and edge states
 - data dependencies
 - user actions
-- responsive considerations
+- responsive behavior
 
-For backend planning, define:
+Backend planning must cover:
 - domains and responsibilities
-- API endpoints
-- request/response contracts
-- services
+- APIs
+- auth/authorization
 - validation
-- auth and authorization
-- background jobs if relevant
+- background jobs
+- external integrations
 
-For database planning, define:
-- entities
+Database planning must cover:
+- entities and fields
 - relationships
-- indexes
 - constraints
+- indexes
 - migration notes
 
-## Phase 4: decomposition into tasks
+### Phase 4 — task decomposition
 
-Convert the plan into executable tasks.
+Convert the plan into focused tasks using `templates/task.md`.
 
-Every task should contain:
-
+Every task must include:
 - goal
 - scope
 - dependencies
 - input files
 - output files
 - acceptance criteria
-
-Write tasks under `tasks/`.
-
-Use small tasks. Avoid giant “build the whole app” tasks.
-
-Recommended order:
-1. repo and architecture foundations
-2. design system or layout shell
-3. auth
-4. core data models
-5. domain APIs
-6. page flows
-7. admin or settings
-8. tests
-9. deployment and polish
+- notes for reviewer
 
 Update:
 - `tasks/backlog.md`
 - `tasks/active.md`
 - `tasks/completed.md`
 
-## Phase 5: execution
+### Phase 5 — execution
 
-For each task:
+When executing a task, read only:
+- the active task file
+- the minimum relevant plan files
+- the latest `track/` notes
+- the latest handoff summary
 
-1. read the current task file
-2. read only the relevant plan files
-3. read the latest track and handoff notes
-4. implement narrowly
-5. review against acceptance criteria
-6. update track files
-7. write a handoff summary for the next task
+Do not drag the entire project into context if it is not needed.
 
-Never carry the entire project history into every step if focused repo files can do the job better.
+At the end of the task:
+- update `track/track.md`
+- update component-specific `track/.../*.md`
+- write or append `track/decisions.md` if design choices changed
+- write `context/handoff.md`
 
-## Phase 6: review
+### Phase 6 — review
 
-After implementation, compare the result against:
-- task acceptance criteria
-- the relevant plan file
-- surrounding architecture consistency
+Check:
+- was the task completed as planned?
+- what changed from the original design?
+- what remains?
+- what is risky or blocked?
+- what should the next task read?
 
-Review for:
-- missing files
-- broken contracts
-- mismatched naming
-- incomplete error states
-- mobile/responsive gaps
-- missing tests where expected
+Use `checklists/review-checklist.md`.
 
-## Phase 7: tracking and handoff
+## Context hygiene
 
-After each task, update:
+Create context packets, not giant histories.
 
-- `track/track.md`
-- `track/decisions.md`
-- relevant component-level track file
-- `context/handoff.md`
+A context packet should contain only:
+- current task goal
+- acceptance criteria
+- relevant files
+- latest handoff summary
+- a tiny decision log excerpt if needed
 
-The handoff should be short and operational:
-- what was done
-- what changed from plan
-- blockers or risks
-- what next task should read first
+Write the active packet to `context/current-context.md`.
 
-## Required standards
+## Typical first files for a brand new app
 
-### Planning standard
+1. `project/project.md`
+2. `project/assumptions.md`
+3. `plan/prd.md`
+4. `plan/architecture/system.md`
+5. `plan/architecture/frontend.md`
+6. `plan/architecture/backend.md`
+7. `plan/architecture/database.md`
+8. `tasks/backlog.md`
+9. `track/track.md`
+10. `context/handoff.md`
 
-Do not say “frontend will include login and dashboard” and stop there.
-Break it down into pages, sections, components, states, and expected behavior.
+## Fast-start command style
 
-### Backend standard
+If the environment can run scripts, initialize the file tree with `scripts/init-project.sh` and then fill the markdown files.
 
-Do not say “build auth API” and stop there.
-Define routes, payload shapes, validation, errors, and service responsibilities.
+## If the user asks for “just start building”
 
-### Tracking standard
+Still do a compressed version of:
+- assumptions
+- plan
+- first tasks
 
-Do not only mark things as done.
-Record what changed, what was deferred, and why.
+Then begin implementation.
 
-### Context standard
-
-Prefer files plus compressed summaries over long conversational memory.
-
-## Operating rules
-
-- If the user requests direct coding immediately, you may start, but still create at least a minimal plan and task file first.
-- If there is already an implementation, infer the current architecture before rewriting the plan.
-- If the plan and code conflict, update `track/decisions.md` and note whether the plan should be revised.
-- If blocked by ambiguity, ask sharp questions instead of making reckless assumptions.
-- If blocked by missing technical detail but reasonable defaults exist, proceed and record assumptions.
-
-## Output templates
-
-Use the templates in:
-- `templates/project.md`
-- `templates/task.md`
-- `templates/handoff.md`
-- `templates/track.md`
-- `templates/decision.md`
-
-Use the checklists in:
-- `checklists/planning-checklist.md`
-- `checklists/review-checklist.md`
-
-If starting a new repo and shell access is available, you may use:
-- `scripts/init-project.sh`
-
-## Example trigger requests
-
-- “Build me a news website.”
-- “Design and implement an internal CRM for a consulting company.”
-- “Create a SaaS app for invoice automation.”
-- “I want to build a recruiting platform from scratch.”
-- “Plan this app properly before you code.”
+Never skip planning entirely for a non-trivial project.

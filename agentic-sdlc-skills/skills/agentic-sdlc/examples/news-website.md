@@ -2,25 +2,17 @@
 
 Build me a news website.
 
-## Recommended first response behavior
+## Good first response pattern
 
-1. Clarify the kind of news website:
-   - public news portal or internal editorial tool
-   - categories
-   - reader accounts needed or not
-   - CMS/admin panel needed or not
-   - search and newsletter requirements
-2. Create `project/project.md` and `project/assumptions.md`
-3. Research comparable news site patterns if requirements stay vague
-4. Write:
+1. Clarify whether the site is general news, niche news, or company news.
+2. Ask whether there is admin publishing, categories, search, SEO, ads, comments, and newsletter support.
+3. If the user wants speed, assume a practical MVP and record assumptions.
+4. Create:
+   - `project/project.md`
+   - `project/assumptions.md`
    - `plan/prd.md`
-   - `plan/architecture/system.md`
    - `plan/architecture/frontend.md`
    - `plan/architecture/backend.md`
    - `plan/architecture/database.md`
-5. Create first tasks for:
-   - app shell
-   - article domain
-   - homepage UI
-   - article detail page
-   - admin/CMS basics
+   - `tasks/backlog.md`
+5. Only then begin coding the shell.

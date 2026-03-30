@@ -1,22 +1,13 @@
-# Component Track
+# Track
 
-## Status
-planned | in-progress | blocked | done | needs-review
+## Status overview
+- Planned:
+- Active:
+- Blocked:
+- Done:
 
-## Summary
-TBD
+## Component status
+| Area | Component | Status | Notes |
+|---|---|---|---|
 
-## What was implemented
-- 
-
-## Deviations from plan
-- 
-
-## Remaining work
-- 
-
-## Risks / blockers
-- 
-
-## Related files
-- 
+## Next priority

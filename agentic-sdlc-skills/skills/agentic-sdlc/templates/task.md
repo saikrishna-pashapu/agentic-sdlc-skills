@@ -1,27 +1,17 @@
-# Task-XXX: Title
+# Task-XXX: <title>
 
 ## Goal
-TBD
 
 ## Scope
-- 
 
 ## Dependencies
-- 
 
-## Inputs
-- plan/...
-- track/...
-- context/handoff.md
+## Input files
 
 ## Output files
-- src/...
-- track/...
 
 ## Acceptance criteria
-- 
-- 
-- 
 
-## Notes
-- 
+## Notes for implementer
+
+## Notes for reviewer

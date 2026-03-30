@@ -1,19 +1,13 @@
 # Handoff Summary
 
 ## What was completed
-- 
 
-## Files changed
-- 
+## What changed from plan
 
-## Changes from original plan
-- 
+## Files touched
 
-## Open issues or risks
-- 
+## Open issues / risks
 
 ## Recommended next task
-- 
 
-## Must-read files for the next task
-- 
+## Minimum context for next agent

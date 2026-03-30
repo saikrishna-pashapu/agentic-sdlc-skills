@@ -1,15 +1,15 @@
 # Planning Checklist
 
-- Product brief created or updated
-- Assumptions recorded explicitly
-- PRD written
-- Frontend architecture written
-- Backend architecture written
-- Database plan written
+- Product type identified
+- Target user identified
+- Major workflows listed
+- Required pages/screens mapped
+- Auth/roles clarified
 - Core entities identified
-- API surface identified
-- Page map identified
-- Component hierarchy identified
-- Initial task list created
-- Acceptance criteria present for active task
-- Risks or open questions recorded
+- API domains outlined
+- DB entities and relationships outlined
+- Mobile/responsive expectations noted
+- Admin/backoffice needs noted
+- Error/empty/loading states considered
+- Deployment assumptions recorded
+- Open questions or assumptions documented

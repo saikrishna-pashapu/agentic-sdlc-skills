@@ -1,37 +1,17 @@
 # Project Brief
 
-## Product name
-TBD
+## Product summary
 
-## One-line summary
-TBD
-
-## Target users
-- 
-
-## Primary user goals
-- 
+## Primary users
 
 ## Core workflows
-1. 
-
-## Required pages or surfaces
-- 
-
-## Roles and permissions
-- 
-
-## Integrations
-- 
-
-## Non-functional requirements
-- Performance:
-- Security:
-- Observability:
-- Accessibility:
 
 ## Success criteria
-- 
 
-## Open questions
-- 
+## Constraints
+
+## Roles and permissions
+
+## Integrations
+
+## Non-functional requirements

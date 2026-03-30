@@ -1,38 +1,15 @@
 # agentic-sdlc-skills
 
-A public skill package for AI coding agents that turns vague product ideas into a structured software delivery workflow.
+A real multi-skill package for AI coding agents that helps turn vague product ideas into a structured software delivery workflow.
 
-The first skill in this repo, **agentic-sdlc**, helps an agent:
+This package is designed for the open Agent Skills ecosystem. Each skill lives in `skills/<skill-name>/SKILL.md`, which is the format used by Codex/OpenAI skills and the `npx skills` CLI. See the official Codex skill docs and the skills CLI README for the current format and install commands.
 
-- clarify product requirements
-- research missing architecture and UI patterns
-- create a plan before coding
-- split work into frontend, backend, database, and infrastructure
-- create task files with dependencies and acceptance criteria
-- keep context clean with handoff summaries
-- track implementation progress and decisions in repo files
+## Included skills
 
-## What this is
-
-This repo is designed for the open agent skills ecosystem. The current format centers on a folder containing a `SKILL.md` file, and the `skills` CLI installs skills from a local path or GitHub repo with `npx skills add ...`. See the official docs and CLI references before publishing publicly. [OpenAI skills docs](https://developers.openai.com/codex/skills/) and [skills CLI](https://github.com/vercel-labs/skills).
-
-## Repository structure
-
-```text
-skills/
-  agentic-sdlc/
-    SKILL.md
-    templates/
-    checklists/
-    examples/
-    scripts/
-```
-
-## Install locally
-
-```bash
-npx skills add ./
-```
+- `agentic-sdlc` — end-to-end orchestrator for intake, planning, tasking, tracking, review, and handoffs
+- `product-intake-brief` — turns vague app ideas into a structured brief and assumptions file
+- `software-architecture-planner` — writes frontend, backend, database, API, and infra plans
+- `implementation-tracker-reviewer` — reviews implementation against the plan and updates tracking files
 
 ## Install from GitHub
 
@@ -40,19 +17,61 @@ npx skills add ./
 npx skills add YOUR_USERNAME/agentic-sdlc-skills
 ```
 
-## Suggested publishing flow
+List skills first:
 
-1. Edit the skill content so it matches your preferred workflow and style.
-2. Test locally with `npx skills add ./`.
-3. Push this repo to GitHub.
-4. Test GitHub install with `npx skills add YOUR_USERNAME/agentic-sdlc-skills`.
-5. Share the repo or submit it to skill discovery sites after you verify installation works.
+```bash
+npx skills add YOUR_USERNAME/agentic-sdlc-skills --list
+```
 
-## Tips
+Install only one skill:
 
-- Keep the durable project state in repo files like `plan/`, `tasks/`, `track/`, and `context/`.
-- Use the skill for workflow and behavior, not as the only memory store.
-- Start with one skill that works well before splitting into multiple specialist skills.
+```bash
+npx skills add YOUR_USERNAME/agentic-sdlc-skills --skill agentic-sdlc
+```
+
+The `skills` CLI supports GitHub shorthand (`owner/repo`), `--list`, and `--skill`.
+
+## Install locally
+
+```bash
+npx skills add ./ --list
+npx skills add ./
+```
+
+## Very important command note
+
+Use **one line**:
+
+```bash
+npx skills add saikrishna-pashapu/agentic-sdlc-skills
+```
+
+Do not split the repo name onto the next line.
+
+## Recommended repo structure
+
+```text
+skills/
+  agentic-sdlc/
+    SKILL.md
+    references/
+    templates/
+    checklists/
+    scripts/
+  product-intake-brief/
+    SKILL.md
+  software-architecture-planner/
+    SKILL.md
+  implementation-tracker-reviewer/
+    SKILL.md
+```
+
+## How this package is meant to be used
+
+1. Start with `agentic-sdlc` for end-to-end orchestration.
+2. Use `product-intake-brief` when the request is vague or incomplete.
+3. Use `software-architecture-planner` before coding major features.
+4. Use `implementation-tracker-reviewer` after each task or PR-sized change.
 
 ## License
 
