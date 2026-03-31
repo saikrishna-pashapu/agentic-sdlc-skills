@@ -91,16 +91,27 @@ Do not split the repo name onto the next line.
 skills/
   agentic-sdlc/
     SKILL.md
-    references/
+    templates/
+      project.md
+      task.md
+      track.md
+      handoff.md
+      decision-log.md
       page-plan.md
       domain-plan.md
       entity-plan.md
+    references/
+      intake-question-bank.md
+      research-guide.md
       decomposition-guide.md
       context-protocol.md
-    templates/
     checklists/
+      planning-checklist.md
+      review-checklist.md
     scripts/
       init-project.sh
+    examples/
+      news-website.md
   product-intake-brief/
     SKILL.md
   software-architecture-planner/
