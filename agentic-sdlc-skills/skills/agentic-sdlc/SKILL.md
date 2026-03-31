@@ -55,7 +55,7 @@ This applies even when the user says "just build it." A compressed version of th
 
 The project maintains two parallel records:
 
-**Plan world** (`plan/`) — what SHOULD exist. The intended system. This includes the product brief, architecture documents, page designs, backend domain definitions, API contracts, database schemas, infrastructure decisions, and the task backlog. Plan files describe the target. They are written before implementation and updated only through deliberate architectural decisions, not as a side effect of coding.
+**Plan world** (`plan/`) — what SHOULD exist. The intended system. This includes the product brief, architecture documents, page designs, backend domain definitions, API contracts, database schemas, and infrastructure decisions. Plan files describe the target. They are written before implementation and updated only through deliberate architectural decisions, not as a side effect of coding.
 
 **Track world** (`track/`) — what ACTUALLY happened. The execution reality. This includes what was implemented, what changed from the plan and why, what was delayed, what decisions were made during coding, what failed, what remains, and what the next step is.
 
